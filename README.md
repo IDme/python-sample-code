@@ -7,6 +7,7 @@ In order to run the example you need to have `python` and `pip` installed.
 First set your client configuration settings in `server.py`
 
 ````bash
+# server.py
 client_id              = 'YOUR_CLIENT_ID'
 client_secret          = 'YOUR_CLIENT_SECRET'
 redirect_uri           = 'YOUR_REDIRECT_URI'
