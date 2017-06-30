@@ -13,7 +13,7 @@ client_secret          = 'YOUR_CLIENT_SECRET'
 redirect_uri           = 'YOUR_REDIRECT_URI'
 authorization_base_url = 'https://api.id.me/oauth/authorize'
 token_url              = 'https://api.id.me/oauth/token'
-attributes_url         = 'https://api.id.me/api/public/v2/attributes.json'
+attributes_url         = 'https://api.id.me/api/public/v3/attributes.json'
 
 # possible scope values: "military", "student", "responder", "government", "teacher"
 scope = ['YOUR_SCOPE_VALUE']
