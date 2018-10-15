@@ -12,14 +12,10 @@ authorization_base_url = 'https://api.id.me/oauth/authorize'
 token_url              = 'https://api.id.me/oauth/token'
 attributes_url         = 'https://api.id.me/api/public/v3/attributes.json'
 
-# possible scope values: "military", "student", "responder", "government", "teacher"
-scope = ['YOUR_SCOPE_VALUE']
-
 @app.route("/")
 
 def demo():
     return render_template('index.html')
-
 
 @app.route("/callback", methods=["GET"])
 def callback():
@@ -34,16 +30,14 @@ def callback():
 
     return redirect(url_for('.profile'))
 
-
 @app.route("/profile", methods=["GET"])
 def profile():
     # Fetching the user's attributes using an OAuth 2 token.
     idme = OAuth2Session(client_id, token=session['oauth_token'])
     payload = idme.get(attributes_url).json()
 
-    session['profile'] = true
+    session['profile'] = 'true'
     return jsonify(payload)
-
 
 if __name__ == "__main__":
     # This allows us to use a plain HTTP callback
