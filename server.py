@@ -5,12 +5,13 @@ from requests_oauthlib import OAuth2Session
 app = Flask(__name__)
 
 # Get this information by registering your app at https://developer.id.me
-client_id              = 'YOUR_CLIENT_ID'
-client_secret          = 'YOUR_CLIENT_SECRET'
-redirect_uri           = 'YOUR_REDIRECT_URI'
+client_id              = '[YOUR_CLIENT_ID]'
+client_secret          = '[YOUR_CLIENT_SECRET]'
+redirect_uri           = 'http://localhost:5000/callback'
 authorization_base_url = 'https://api.id.me/oauth/authorize'
 token_url              = 'https://api.id.me/oauth/token'
 attributes_url         = 'https://api.id.me/api/public/v3/attributes.json'
+
 
 @app.route("/")
 
@@ -37,7 +38,9 @@ def profile():
     payload = idme.get(attributes_url).json()
 
     session['profile'] = 'true'
-    return jsonify(payload)
+    return "Thank you for verifying " + payload['attributes'][1]['value'] + 
+        " " + payload['attributes'][2]['value'])
+    
 
 if __name__ == "__main__":
     # This allows us to use a plain HTTP callback
