@@ -1,0 +1,30 @@
+# This file is deployed to all repos managed by the protected_repo module
+# (enable_stale_pr_checker = true by default). It runs daily and warns/closes
+# PRs that have been inactive for too long. Issues are never affected.
+#
+# The behaviour lives in workflow-library so the actions/stale version is held in one
+# place rather than in every managed repo. Change the thresholds or the messages
+# there; this file only changes to add a trigger or override an input.
+#
+# Default behavior:
+#   Day 21: Adds 'stale' label + posts a warning comment
+#   Day 28: Closes the PR if no new activity since the warning
+#
+# To reset the stale timer: push a commit, leave a comment, or update a label.
+# To permanently exempt a PR: add the 'pinned' or 'do-not-close' label.
+# To opt this repo out: set enable_stale_pr_checker = false in terraform-github.
+
+name: "Stale PR Checker"
+
+on:
+  schedule:
+    - cron: '0 14 * * *'  # Every day at 9am ET (UTC-5 / UTC-4 during DST)
+  workflow_dispatch:
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  stale:
+    uses: IDme/workflow-library/.github/workflows/stale-pr-checker.yml@a3ec0d5671108219ec14689d46731c7acd3957bc # master @ 2026-09-21
