@@ -13,8 +13,8 @@ updates:
     labels:
       - dependencies
     commit-message:
-      prefix: chore(deps)
-      prefix-development: chore(deps-dev)
+      prefix: "SECURITY-0: chore(deps)"
+      prefix-development: "SECURITY-0: chore(deps-dev)"
     groups:
       pip-minor-patch:
         update-types:
@@ -31,7 +31,7 @@ updates:
     labels:
       - dependencies
     commit-message:
-      prefix: chore(deps)
+      prefix: "SECURITY-0: chore(deps)"
     groups:
       github-actions-minor-patch:
         update-types:
